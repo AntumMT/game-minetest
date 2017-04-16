@@ -169,7 +169,6 @@ function flowers.flower_spread(pos, node)
 end
 
 minetest.register_abm({
-	label = "Flower spread",
 	nodenames = {"group:flora"},
 	interval = 13,
 	chance = 300,
@@ -245,7 +244,6 @@ function flowers.mushroom_spread(pos, node)
 end
 
 minetest.register_abm({
-	label = "Mushroom spread",
 	nodenames = {"flowers:mushroom_brown", "flowers:mushroom_red"},
 	interval = 11,
 	chance = 150,
