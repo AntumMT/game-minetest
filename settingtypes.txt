@@ -32,6 +32,12 @@ enable_bed_respawn (Respawn at bed) bool true
 #    in beds.
 enable_bed_night_skip (Skip night when sleeping) bool true
 
+#    Registers beds as aliases of 'homedecor' bed rather than new nodes.
+#    WARNING: To prevent recursive dependencies, this mod does not check for
+#             'homedecor'. So leave this disabled if 'homedecor' is not installed
+#             and you want beds.
+beds.homedecor_override (Register beds as aliases for homedecor) bool false
+
 #    When TNT explodes, it destroys nearby nodes and damages nearby players.
 #    This setting is disabled by default on servers.
 enable_tnt (TNT) bool true
