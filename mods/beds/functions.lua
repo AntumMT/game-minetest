@@ -5,6 +5,11 @@ if enable_night_skip == nil then
 	enable_night_skip = true
 end
 
+local enable_single_night_skip = false
+if minetest.settings:get_bool("enable_single_night_skip") == true then
+	enable_single_night_skip = true
+end
+
 local is_sp = minetest.is_singleplayer()
 local enable_respawn = minetest.settings:get_bool("enable_bed_respawn")
 if enable_respawn == nil then
@@ -107,7 +112,14 @@ local function update_formspecs(finished)
 	local ges = #minetest.get_connected_players()
 	local form_n
 	local player_in_bed = get_player_in_bed_count()
-	local is_majority = (ges / 2) < player_in_bed
+	local is_majority = false
+
+	if enable_single_night_skip then
+		-- Displays 'Force night skip' button for any single player in bed
+		is_majority = true
+	else
+		is_majority = (ges / 2) < player_in_bed
+	end
 
 	if finished then
 		form_n = beds.formspec .. "label[2.7,9; Good morning.]"
